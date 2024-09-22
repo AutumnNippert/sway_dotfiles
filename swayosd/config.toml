@@ -1,0 +1,18 @@
+# Configuration file for swayosd
+
+[server]
+# Path to the style file (optional)
+style = "style.css"
+
+# Top margin in pixels (optional)
+top_margin = 10.0
+
+# Maximum volume level (0-100) (optional)
+max_volume = 100
+
+# Show percentage (optional)
+show_percentage = false
+
+[client]
+# Add client-specific configuration here if needed
+
