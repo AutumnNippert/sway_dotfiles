@@ -1,9 +1,9 @@
-*{
+/**{
     color: white;
     background-color: #14243d;
     opacity: 0.9;
     padding: 10px;
-}
+
 
 
 
@@ -11,4 +11,40 @@
 #ProgressBar{
     color: white;
     opacity: 1;
+}*/
+
+window {
+    border-radius: 10px;
+    background-color: rgba(30, 30, 30, 0.9);
+    font-family: "Fira Sans", sans-serif;
+    font-size: 14px;
+    color: white;
+    padding: 10px;
 }
+
+label {
+    color: white;
+}
+
+label.urgent {
+    color: #ff5555; /* Red for urgent messages */
+}
+
+label.low {
+    color: #8be9fd; /* Light blue for low priority */
+}
+
+label.normal {
+    color: #f8f8f2; /* Normal white text */
+}
+
+progressbar {
+    border-radius: 5px;
+    background-color: rgba(80, 250, 123, 0.8);
+}
+
+progress {
+    background-color: rgba(80, 250, 123, 0.8);
+    border-radius: 5px;
+}
+

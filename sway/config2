@@ -4,46 +4,30 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-exec swaync
-exec swayosd-server
-exec waybar
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
-#set $left h
-#set $down j
-#set $up k
-#set $right l
+set $left h
+set $down j
+set $up k
+set $right l
 # Your preferred terminal emulator
-set $term rio
+set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi --show drun #dmenu_path | wmenu | xargs swaymsg exec --
-
-set $browser firefox
-
-set $lock hyprlock
-set $code flatpak run com.visualstudio.code
-set $discord discord
-set $logout wlogout
-set $files nautilus
-set $notifications swaync-client -t -sw
-set $mirror wl-present mirror
+set $menu dmenu_path | wmenu | xargs swaymsg exec --
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg /usr/share/backgrounds/anime_girl_city.jpg fill
-output * bg /home/autumn/Pictures/Chainsaw-Man-Power-Desktop-Wallpaper.jpg fill
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-output eDP-1 resolution 1920x1200 position 0,0 scale 1 adaptive_sync on
-
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -60,18 +44,6 @@ output eDP-1 resolution 1920x1200 position 0,0 scale 1 adaptive_sync on
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-default_border none
-
-gaps inner 5
-corner_radius 5
-blur on
-blur_passes 2
-blur_radius 5
-
-set $opacity 0.98
-for_window [class=".*"] opacity $opacity
-for_window [app_id=".*"] opacity $opacity
-
 ### Input configuration
 #
 # Example configuration:
@@ -86,34 +58,18 @@ for_window [app_id=".*"] opacity $opacity
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
-	dwt enabled
-	tap enabled
-	natural_scroll enabled
-	middle_emulation enabled
-}
-
 ### Key bindings
 #
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+q exec $term
+    bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+c kill
+    bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+Space exec $menu
-    bindsym $mod+r exec $files
-    bindsym $mod+Shift+n exec $notifications
-
-    bindsym $mod+d exec $discord
-
-    bindsym $mod+l exec $lock
-    bindsym $mod+Shift+l exec $logout
-    bindsym $mod+m exec $mirror
-    bindsym $mod+Shift+m exec $mirror -i
+    bindsym $mod+d exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -122,48 +78,19 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
     # mouse button for dragging.
     floating_modifier $mod normal
 
-    bindsym $mod+F exec $browser
-
     # Reload the configuration file
-    bindsym $mod+Shift+R reload
+    bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-
-    bindsym Ctrl+Shift+S exec grim - | wl-copy
-    bindsym $mod+Shift+S exec grim -g "$(slurp)" - | wl-copy
-#    bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
-#    bindsym XF86MonBrightnessUp exec brightnessctl s 10%+
-
-#    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-#    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-#    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-    
-    # Sink volume toggle mute
-    bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
-    # Source volume toggle mute
-    bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
-
-    # Sink volume raise with custom value optionally with --device
-    bindsym XF86AudioRaiseVolume exec  swayosd-client --output-volume +5 @DEFAULT_SINK@
-    # Sink volume lower with custom value optionally with --device
-    bindsym XF86AudioLowerVolume exec  swayosd-client --output-volume -5 @DEFAULT_SINK@
-
-    # Capslock (If you don't want to use the backend)
-    bindsym --release Caps_Lock exec swayosd-client --caps-lock
-
-    # Brightness raise with custom value('+' sign needed)
-    bindsym XF86MonBrightnessUp  exec swayosd-client --brightness +10
-    # Brightness lower with custom value('-' sign needed)
-    bindsym XF86MonBrightnessDown exec swayosd-client --brightness -10
 #
 # Moving around:
 #
     # Move your focus around
-    #bindsym $mod+$left focus left
-    #bindsym $mod+$down focus down
-    #bindsym $mod+$up focus up
-    #bindsym $mod+$right focus right
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
@@ -171,10 +98,10 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
     bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
-    #bindsym $mod+Shift+$left move left
-    #bindsym $mod+Shift+$down move down
-    #bindsym $mod+Shift+$up move up
-    #bindsym $mod+Shift+$right move right
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
     # Ditto, with arrow keys
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
@@ -207,9 +134,6 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-
-    bindgesture swipe:right workspace prev
-    bindgesture swipe:left workspace next
 #
 # Layout stuff:
 #
@@ -225,13 +149,13 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+Shift+F fullscreen
+    bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    # bindsym $mod+space focus mode_toggle
+    bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -255,10 +179,10 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    #bindsym $left resize shrink width 10px
-    #bindsym $down resize grow height 10px
-    #bindsym $up resize shrink height 10px
-    #bindsym $right resize grow width 10px
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
 
     # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
@@ -270,25 +194,24 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-# bindsym $mod+r mode "resize"
+bindsym $mod+r mode "resize"
 
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-#bar {
-#    position top
-#    gaps 10
-#
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-#
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
-#}
+bar {
+    position top
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
+}
 
 include /etc/sway/config.d/*

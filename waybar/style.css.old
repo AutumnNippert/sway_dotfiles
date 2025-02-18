@@ -1,0 +1,172 @@
+* {
+  font-family: 'Fira Code Nerd Font';
+  /* font-family: 'Ubuntu Nerd Font'; */
+  font-size: 12px;
+  margin: 0;
+  padding: 1px;
+}
+
+window#waybar {
+  background-color: transparent;
+  border-radius: 20px;
+  padding: 0px 10px 0px 10px;
+  margin: 10px;
+  min-height: 10px;
+}
+
+.modules-right {
+  margin-right: 0.1rem;
+  background-color: #14243d;
+  margin: 5;
+  padding: 0 1.5em 0 1.5em;
+  border-radius: 15px;
+}
+
+.modules-left {
+  margin-left: 0.1rem;
+  background-color: #14243d;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  padding: 0 1em 0 1em;
+}
+
+.modules-center {
+  background-color: #14243d;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 0.1rem;
+  border-radius: 15px;
+}
+
+tooltip {
+  background: #14243d;
+  border-radius: 10px;
+}
+
+tooltip label {
+  color: #fccd5d;
+  background-color: #14243d;
+  border-radius: 10px;
+}
+
+tooltip * {
+  border-radius: 10px;
+}
+
+#workspaces button {
+  margin: 0;
+  color: #ffffff;
+  padding: 0 2px;
+  font-weight: bolder;
+  font-style: normal;
+  border-radius: 50%;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  background-color: #ffffff;
+  color: #14243d;
+  border-radius: 15px;
+}
+
+
+#workspaces button.active {
+  color: #ffffff;
+  background-color: rgba(125, 174, 163, 0.9);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.818);
+  transition: all 0.1s ease-in-out;
+  border-radius: 15px;
+}
+
+#clock,
+#custom-weather,
+#custom-updates,
+#custom-notification {
+  font-family: 'GE Inspira';
+  font-weight: bolder;
+  text-shadow: 0 0 5px rgb(0, 0, 0);
+  color: #ffffff;
+  background-color: #14243d;
+  padding: 4px;
+}
+
+
+#clock {
+  border-radius: 15px;
+  padding: 5 10 5 10;
+}
+
+#custom-updates {
+  padding-left: 1rem;
+}
+
+#custom-show_taskbar {
+  padding-left: 1rem;
+}
+
+#memory {
+  color: #ffffff;
+  padding: 0 0.3em 0 0.5em;
+}
+
+#pulseaudio {
+  margin: 0;
+  padding: 0 0.5em 0 0.4em;
+  color: #ffffff;
+}
+
+#backlight {
+  margin: 0;
+  padding: 0 0.5em 0 0.4em;
+  color: #ffffff;
+}
+
+#cpu {
+  margin: 0;
+  padding: 0 0.1em 0 0.1em;
+  color: #ffffff;
+}
+
+#network {
+  margin: 0;
+  padding: 0 0.4em 0 0.5em;
+  color: #ffffff;
+}
+
+#custom-cycle_wall {
+  margin: 0;
+  padding: 0 0.5em;
+  color: #ffffff;
+}
+
+#language {
+  margin: 0;
+  padding: 0 0.1em;
+  color: #ffffff;
+}
+
+#tray {
+  margin: 0;
+  padding-right: 10px;
+  color: #d3869b;
+}
+
+#battery {
+  margin: 0;
+  color: #ffffff;
+  padding: 5px 10px 5px 10px;
+}
+
+#disk {
+  margin: 0;
+  padding: 0 0.1em 0 0.1em;
+  color: #ffffff;
+}
+
+#window {
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.818);
+  transition: all 0.1s ease-in-out;
+}
